@@ -248,8 +248,8 @@ void SimpleList_push_front(SimpleList *l,int v){
 }
 int SimpleList_pop_back(SimpleList *l){
     if(l->head==nullptr){
-    std::string err = "lista vuota";
-      throw err;
+        std::string err = "lista vuota";
+        throw err;
     }
     Cell *prev = l->head;
     Cell *cur = l->head;
