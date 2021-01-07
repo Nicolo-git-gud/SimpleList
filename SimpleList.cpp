@@ -89,7 +89,7 @@ void SimpleList_push_back(SimpleList *l, int value){
     Cell *aux=new Cell;
     aux->value=value;
     if(l->head==nullptr){
-        aux->next=l->head;
+        aux->next=nullptr;
         l->head=aux;
         l -> lenght = 1;
         return;
@@ -251,6 +251,15 @@ int SimpleList_pop_back(SimpleList *l){
         std::string err = "lista vuota";
         throw err;
     }
+    
+    if(l->lenght==1){
+        int value = l->head->value;
+        Cell *unico = l->head;
+        l->head = nullptr;
+        delete unico;
+        l->lenght--;
+        return value;
+    }
     Cell *prev = l->head;
     Cell *cur = l->head;
     while(cur->next != nullptr){
@@ -260,5 +269,28 @@ int SimpleList_pop_back(SimpleList *l){
     int value = cur -> value;
     prev -> next = nullptr;
     delete cur;
+    l->lenght--;
+    return value;
+}
+int SimpleList_pop_front(SimpleList *l){
+    if(l->head==nullptr){
+        std::string err = "lista vuota";
+        throw err;
+    }
+    
+    if(l->lenght==1){
+        int value = l->head->value;
+        Cell *unico = l->head;
+        l->head = nullptr;
+        delete unico;
+        l->lenght--;
+        return value;
+    }
+    
+    Cell *cur = l->head;
+    int value = cur -> value;
+    l->head = l->head->next;
+    delete cur;
+    l->lenght--;
     return value;
 }
