@@ -32,4 +32,4 @@ SimpleList * SimpleList_from_array(int a[], int l);
 int * array_from_list(SimpleList *l);
 void SimpleList_push_front(SimpleList *l,int v);
 int SimpleList_pop_back(SimpleList *l);
-int SimpleList_pop_front(SimpleList *l);bv 
+int SimpleList_pop_front(SimpleList *l);
